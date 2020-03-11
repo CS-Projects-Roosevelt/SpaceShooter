@@ -130,7 +130,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1411858347042426, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
       propertyPath: m_Name
-      value: 2DScifiFighterExcaliburTopViewMasterPrefab
+      value: PlayerShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526754174330488, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779328363507164, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4735194838654956, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2e87dd890b8460388c77d940a59fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 30
   camera: {fileID: 519420028}
 --- !u!1 &519420028
 GameObject:
@@ -208,7 +217,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -224,20 +232,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9ca443bef338450f89e7c751bbddeb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1063467534}
-  offset: {x: 0, y: 0, z: -1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -301,6 +295,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 180176444}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1418828343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1970920876168760, guid: 6185077c5c222024e8cf1cc5d6ed9ef8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585105351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1418828344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418828343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95d590b31e4ff342bd9999e8228a7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: PlayerShip
+  speed: 5
 --- !u!1001 &1585105351
 PrefabInstance:
   m_ObjectHideFlags: 0
