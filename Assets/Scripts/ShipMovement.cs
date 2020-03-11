@@ -10,7 +10,7 @@ public class ShipMovement : MonoBehaviour
       
     }
     private float damp = 0.5f;
-	private float speed = 30.0f;
+	public float speed;
     public GameObject camera;
 	public float Speed { get => speed; set => speed = value; }
 
