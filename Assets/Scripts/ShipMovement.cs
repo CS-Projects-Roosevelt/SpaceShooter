@@ -67,5 +67,7 @@ public class ShipMovement : MonoBehaviour
            
             
         camera.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+        //transform.rotation = Quaternion.Euler(new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")))));
     }
 }
