@@ -24,7 +24,7 @@ public class FollowShip : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector3.up, deltaVector));
         }
-        if (deltaVector.magnitude > speed) // prevents ship from rapidly changing directions when it's over its target
+        if (deltaVector.magnitude > speed * Time.deltaTime) // prevents ship from rapidly changing directions when it's over its target
         {
             //transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector3.up, deltaVector));
             transform.position += deltaVector / deltaVector.magnitude * speed * Time.deltaTime;
