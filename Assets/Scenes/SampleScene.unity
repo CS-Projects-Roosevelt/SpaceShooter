@@ -130,7 +130,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1411858347042426, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
       propertyPath: m_Name
-      value: 2DScifiFighterExcaliburTopViewMasterPrefab
+      value: PlayerShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526754174330488, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779328363507164, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1526754174330488, guid: ceb2e69d6fcbbcf4eb36a02462f60ce6, type: 3}
       propertyPath: m_IsActive
@@ -208,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2e87dd890b8460388c77d940a59fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 30
   camera: {fileID: 519420028}
 --- !u!114 &254673133
 MonoBehaviour:
@@ -314,6 +323,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 180176444}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &1114395825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,6 +381,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c54a58f50e3f946a07359f340491f3, type: 3}
+=======
+--- !u!1 &1418828343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1970920876168760, guid: 6185077c5c222024e8cf1cc5d6ed9ef8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585105351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1418828344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418828343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95d590b31e4ff342bd9999e8228a7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: PlayerShip
+  speed: 5
+  shootingInterval: 2
+  bulletSprite: {fileID: 21300000, guid: da841e0ed6399bd4695ebcfa661935f8, type: 3}
+>>>>>>> 769fdb43fad3cd1adcdbdd2a6c32b22553ac7257
 --- !u!1001 &1585105351
 PrefabInstance:
   m_ObjectHideFlags: 0
