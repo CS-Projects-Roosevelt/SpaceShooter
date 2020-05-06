@@ -18,7 +18,7 @@ public class ShipMovement : MonoBehaviour
 	void Update()
     {
         camera.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-
+        /*
         if ((Input.GetKey(KeyCode.DownArrow)) && (Input.GetKey(KeyCode.LeftArrow)))
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 125));
@@ -64,8 +64,14 @@ public class ShipMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
                 transform.position += Vector3.down * speed * Time.deltaTime;
             }
-           
-            
+                */
+        Vector2 velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed * Time.deltaTime;
+        if (velocity.magnitude > 0)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, velocity))); //.lookat; .direction
+        }
+        transform.position += (Vector3)velocity;
+
         camera.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 
         //transform.rotation = Quaternion.Euler(new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")))));
