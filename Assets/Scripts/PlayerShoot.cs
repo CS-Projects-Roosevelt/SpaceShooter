@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public Sprite bulletSprite;
+    private const float shotDelay = 0.5f;
+    private float lastShotTime = -shotDelay;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +16,10 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastShotTime + shotDelay)
         {
             Shoot();
+            lastShotTime = Time.time;
         }
     }
 
@@ -27,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
         bulletTransform.position = transform.position;
         TempBullet bulletScript = bullet.AddComponent<TempBullet>();
         bulletScript.speed = 2f;
-        bulletScript.lifespan = 1f;
+        bulletScript.lifespan = 2f;
         bulletScript.angle = transform.rotation.eulerAngles[2] + 90;
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = bulletSprite;
