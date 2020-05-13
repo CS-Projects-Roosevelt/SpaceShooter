@@ -29,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = transform.position;
         TempBullet bulletScript = bullet.AddComponent<TempBullet>();
-        bulletScript.speed = 2f;
+        bulletScript.speed = gameObject.GetComponent<ShipMovement>().velocity.magnitude + 25f;
         bulletScript.lifespan = 2f;
         bulletScript.angle = transform.rotation.eulerAngles[2] + 90;
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();

@@ -13,6 +13,7 @@ public class ShipMovement : MonoBehaviour
 	public float speed;
     public GameObject camera;
 	public float Speed { get => speed; set => speed = value; }
+    public Vector2 velocity;
 
 	// Update is called once per frame
 	void Update()
@@ -65,12 +66,16 @@ public class ShipMovement : MonoBehaviour
                 transform.position += Vector3.down * speed * Time.deltaTime;
             }
                 */
-        Vector2 velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed * Time.deltaTime;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        velocity = new Vector2(horizontalInput, verticalInput) * speed;
+        float facingAngle = (Vector2.SignedAngle(Vector2.up, velocity) + 360) % 360; //last part makes sure the angle is positive (necessary for next line to work)
+        velocity *= Mathf.Cos(((facingAngle + 45) % 90 - 45) * Mathf.PI / 180); //accounts for the fact that a 1,1 vector has greater magnitude than 1,0 (prevents player from going faster diagonally)
         if (velocity.magnitude > 0)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, velocity))); //.lookat; .direction
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, facingAngle)); //.lookat; .direction
         }
-        transform.position += (Vector3)velocity;
+        transform.position += (Vector3)velocity * Time.deltaTime;
 
         camera.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 

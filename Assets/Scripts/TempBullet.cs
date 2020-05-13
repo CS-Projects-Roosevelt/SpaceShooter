@@ -21,7 +21,7 @@ public class TempBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += movementVector;
+        transform.position += movementVector * Time.deltaTime;
         if (Time.time > startTime + lifespan)
         {
             Destroy(gameObject);

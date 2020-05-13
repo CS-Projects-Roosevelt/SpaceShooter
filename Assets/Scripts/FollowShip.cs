@@ -47,7 +47,7 @@ public class FollowShip : MonoBehaviour
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = transform.position;
         TempBullet bulletScript = bullet.AddComponent<TempBullet>();
-        bulletScript.speed = 1f;
+        bulletScript.speed = 15f;
         bulletScript.lifespan = 3f;
         bulletScript.angle = transform.rotation.eulerAngles[2] + 90;
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();
