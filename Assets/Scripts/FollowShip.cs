@@ -36,20 +36,20 @@ public class FollowShip : MonoBehaviour
 
         if (Time.time > lastShotTime + shootingInterval)
         {
-            Shoot(/*Vector2.SignedAngle(Vector3.up, deltaVector)*/transform.rotation.eulerAngles[2] + 90);
+            Shoot();
             lastShotTime = Time.time;
         }
     }
 
-    void Shoot(float angle)
+    void Shoot()
     {
         GameObject bullet = new GameObject("FollowShipBullet");
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = transform.position;
         TempBullet bulletScript = bullet.AddComponent<TempBullet>();
-        bulletScript.speed = 1f;
+        bulletScript.speed = 15f;
         bulletScript.lifespan = 3f;
-        bulletScript.angle = angle;
+        bulletScript.angle = transform.rotation.eulerAngles[2] + 90;
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = bulletSprite;
     }
