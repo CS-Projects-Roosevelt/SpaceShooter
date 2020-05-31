@@ -8,6 +8,7 @@ public class FollowShip : MonoBehaviour
     public string targetName;
     public float speed;
     public float shootingInterval;
+    public float distanceToMaintain;
     public Sprite bulletSprite;
     private float lastShotTime = 0f;
     // Start is called before the first frame update
@@ -24,14 +25,17 @@ public class FollowShip : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector3.up, deltaVector));
         }
-        if (deltaVector.magnitude > speed * Time.deltaTime) // prevents ship from rapidly changing directions when it's over its target
+        if (true)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector3.up, deltaVector));
-            transform.position += deltaVector / deltaVector.magnitude * speed * Time.deltaTime;
-        }
-        else // places ship at target's location if it is within the distance it travels in one tick
-        {
-            transform.position = target.transform.position;
+            if (deltaVector.magnitude > speed * Time.deltaTime + distanceToMaintain) // prevents ship from rapidly changing directions when it's over its target
+            {
+                //transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector3.up, deltaVector));
+                transform.position += deltaVector / deltaVector.magnitude * speed * Time.deltaTime;
+            }
+            else // places ship at target's location if it is within the distance it travels in one tick
+            {
+                transform.position += deltaVector / deltaVector.magnitude * Mathf.Max(deltaVector.magnitude - distanceToMaintain, 0);
+            }
         }
 
         if (Time.time > lastShotTime + shootingInterval)
