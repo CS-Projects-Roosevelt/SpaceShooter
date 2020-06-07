@@ -7,6 +7,7 @@ public class TempBullet : MonoBehaviour
     public float speed;
     public float lifespan; // in seconds
     public float angle;
+    public string sourceParentName;
     private Vector3 movementVector;
     private float startTime;
     // Start is called before the first frame update
@@ -23,6 +24,14 @@ public class TempBullet : MonoBehaviour
     {
         transform.position += movementVector * Time.deltaTime;
         if (Time.time > startTime + lifespan)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.transform.root.name != sourceParentName)
         {
             Destroy(gameObject);
         }

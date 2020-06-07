@@ -29,6 +29,12 @@ public class PlayerShoot : MonoBehaviour
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = transform.position;
         TempBullet bulletScript = bullet.AddComponent<TempBullet>();
+        Rigidbody2D rigidbody = bullet.AddComponent<Rigidbody2D>();
+        rigidbody.gravityScale = 0;
+        CapsuleCollider2D capsuleCollider = bullet.AddComponent<CapsuleCollider2D>();
+        capsuleCollider.isTrigger = true;
+        rigidbody.isKinematic = true;
+        bulletScript.sourceParentName = gameObject.transform.root.name;
         bulletScript.speed = gameObject.GetComponent<ShipMovement>().velocity.magnitude + 25f;
         bulletScript.lifespan = 2f;
         bulletScript.angle = transform.rotation.eulerAngles[2] + 90;
