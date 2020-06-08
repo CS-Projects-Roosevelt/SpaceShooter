@@ -21,7 +21,6 @@ public class LevelEnd : MonoBehaviour
     {
         if (other.gameObject.transform.root.name == "PlayerShip")
         {
-            Debug.Log("Level end collision with " + other.gameObject.transform.root.name);
             SceneManager.LoadScene(transportTo);
         }
     }
