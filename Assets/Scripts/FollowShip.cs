@@ -11,6 +11,7 @@ public class FollowShip : MonoBehaviour
     public float distanceToMaintain;
     public Sprite bulletSprite;
     private float lastShotTime = 0f;
+    private Vector2 velocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +28,13 @@ public class FollowShip : MonoBehaviour
         }
         if (deltaVector.magnitude > speed * Time.deltaTime + distanceToMaintain) // prevents ship from rapidly changing directions when it's over its target & from getting too close
         {
-             transform.position += deltaVector / deltaVector.magnitude * speed * Time.deltaTime;
+             velocity = deltaVector / deltaVector.magnitude * speed;
         }
         else // places ship at target's location if it is within the distance it travels in one tick
         {
-               transform.position += deltaVector / deltaVector.magnitude * Mathf.Max(deltaVector.magnitude - distanceToMaintain, 0); //Mathf.max prevents ship from backing away when target gets too close
+               velocity = deltaVector / deltaVector.magnitude * Mathf.Max(deltaVector.magnitude - distanceToMaintain, 0) / Time.deltaTime; //Mathf.max prevents ship from backing away when target gets too close
         }
+        transform.position += (Vector3)velocity * Time.deltaTime;
 
         if (Time.time > lastShotTime + shootingInterval)
         {
@@ -47,7 +49,13 @@ public class FollowShip : MonoBehaviour
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = transform.position;
         TempBullet bulletScript = bullet.AddComponent<TempBullet>();
-        bulletScript.speed = 15f;
+        Rigidbody2D rigidbody = bullet.AddComponent<Rigidbody2D>();
+        rigidbody.gravityScale = 0;
+        CapsuleCollider2D capsuleCollider = bullet.AddComponent<CapsuleCollider2D>();
+        capsuleCollider.isTrigger = true;
+        rigidbody.isKinematic = true;
+        bulletScript.sourceParentName = gameObject.transform.root.name;
+        bulletScript.speed = velocity.magnitude + 10f;
         bulletScript.lifespan = 3f;
         bulletScript.angle = transform.rotation.eulerAngles[2] + 90;
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();
