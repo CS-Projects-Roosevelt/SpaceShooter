@@ -50,7 +50,7 @@ public class FollowShip : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = new GameObject("FollowShipBullet");
+        GameObject bullet = new GameObject("FShipBullet");
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = transform.position;
         TempBullet bulletScript = bullet.AddComponent<TempBullet>();
