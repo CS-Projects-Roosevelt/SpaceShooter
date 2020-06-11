@@ -37,6 +37,11 @@ public class TempBullet : MonoBehaviour
             {
                 other.gameObject.transform.root.GetComponent<PlayerShip>().TakeDamage(1);
             }
+
+            if ((other.gameObject.transform.root.name+"          ").Substring(0, 10) == "FollowShip")
+            {
+                other.gameObject.transform.root.GetComponent<FollowShip>().TakeDamage(1);
+            }
             Destroy(gameObject);
         }
 
