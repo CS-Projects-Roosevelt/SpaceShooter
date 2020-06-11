@@ -64,4 +64,7 @@ public class PlayerShip : MonoBehaviour
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = bulletSprite;
     }
+    public void TakeDamage(int amount) {
+        health -= amount;
+    }
 }

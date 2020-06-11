@@ -33,7 +33,13 @@ public class TempBullet : MonoBehaviour
     {
         if (other.gameObject.transform.root.name != sourceParentName)
         {
+            if (other.gameObject.transform.root.name == "PlayerShip")
+            {
+                other.gameObject.transform.root.GetComponent<PlayerShip>().TakeDamage(1);
+            }
             Destroy(gameObject);
         }
+
+       
     }
 }
