@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerShip : MonoBehaviour
 {
@@ -44,6 +45,10 @@ public class PlayerShip : MonoBehaviour
 
         //health
         GameObject.Find("Canvas").GetComponent<UserInterface>().SetHealth(health);
+
+        if (health <= 0) {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     private void Shoot()
@@ -63,5 +68,8 @@ public class PlayerShip : MonoBehaviour
         bulletScript.angle = transform.rotation.eulerAngles[2] + 90;
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = bulletSprite;
+    }
+    public void TakeDamage(int amount) {
+        health -= amount;
     }
 }

@@ -12,6 +12,7 @@ public class FollowShip : MonoBehaviour
     public Sprite bulletSprite;
     private float lastShotTime = 0f;
     private Vector2 velocity;
+    public int health;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,10 @@ public class FollowShip : MonoBehaviour
             Shoot();
             lastShotTime = Time.time;
         }
+
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 
     void Shoot()
@@ -61,4 +66,10 @@ public class FollowShip : MonoBehaviour
         SpriteRenderer spriteRenderer = bullet.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = bulletSprite;
     }
+
+    public void TakeDamage(int amount) {
+        health -= amount;
+        Debug.Log("taken Damage!");
+    }
+    
 }
