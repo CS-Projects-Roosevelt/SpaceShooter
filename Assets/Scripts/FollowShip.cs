@@ -69,7 +69,7 @@ public class FollowShip : MonoBehaviour
 
     public void TakeDamage(int amount) {
         health -= amount;
-        Debug.Log("taken Damage!");
+        //Debug.Log("taken Damage!");
     }
     
 }
